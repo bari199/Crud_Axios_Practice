@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-//https://698eba51aded595c2532943c.mockapi.io/Crud
 
 function Create() {
   //state decralation
@@ -14,7 +13,7 @@ function Create() {
 
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     axios
       .post('https://698ec424aded595c2532b6b0.mockapi.io/cruds', {
@@ -23,12 +22,14 @@ function Create() {
         age: age,
         password: password,
       })
-      .then(() => {
+      .then((res) => {
         alert("Data insertaed");
+        console.log(res.data);
         navigate("/");
       })
       .catch((err) => {
         alert("Error" + err);
+
       });
   };
 
